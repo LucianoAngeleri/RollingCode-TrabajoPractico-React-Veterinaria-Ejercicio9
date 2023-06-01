@@ -1,6 +1,5 @@
 # Trabajo Práctico de React
-## Ejercicio 5 - Lista de Tareas (Parte 2)
-
+## Ejercicio 9 - Pacientes de Veterinaria
 Este proyecto es una aplicación web desarrollada en **React** que permite registrar una cita en una veterinaria, borrar una cita y ver una lista de las citas que se almacenan en Local Storage.
 
 ## Autor
