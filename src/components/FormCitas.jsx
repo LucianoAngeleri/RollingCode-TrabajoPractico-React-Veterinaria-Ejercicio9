@@ -1,0 +1,72 @@
+import { useState } from "react";
+import { Card, Form, Button } from "react-bootstrap";
+
+class Cita {
+    constructor(mascota, propietario, fecha, hora, sintomas) {
+        this.mascota = mascota;
+        this.propietario = propietario;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.sintomas = sintomas;
+    }
+}
+
+const FormCitas = () => {
+    const [mascota, setMascota] = useState("")
+    const [propietario, setPropietario] = useState("")
+    const [fecha, setFecha] = useState("")
+    const [hora, setHora] = useState("")
+    const [sintomas, setSintomas] = useState("")
+
+    const [citas, setCitas] = useState([])
+
+    const fechaActual = new Date().toISOString().split('T')[0];
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const cita = new Cita(mascota, propietario, fecha, hora, sintomas)
+        setCitas([...citas, cita])
+
+        setMascota("")
+        setPropietario("")
+        setFecha("")
+        setHora("")
+        setSintomas("")
+    }
+
+    return (
+        <Card>
+            <Card.Header className="p-4">
+                <Card.Title className="text-primary">Llenar el formulario para crear una cita</Card.Title>
+            </Card.Header>
+            <Form onSubmit={handleSubmit}>
+                <Card.Body className="p-4">
+                    <Form.Group controlId="inputMascota" className="d-flex gap-3 mb-4 justify-content-center align-items-center">
+                        <Form.Label className="fw-bold w-25">Nombre de Mascota</Form.Label>
+                        <Form.Control type="text" placeholder="Ingrese el nombre de la mascota.." maxLength="60" minLength="3" required value={mascota} onChange={(e) => setMascota(e.target.value)}></Form.Control>
+                    </Form.Group>
+                    <Form.Group controlId="inputPropietario" className="d-flex gap-3 mb-4 justify-content-center align-items-center">
+                        <Form.Label className="fw-bold w-25">Nombre de Dueño</Form.Label>
+                        <Form.Control type="text" placeholder="Ingrese el nombre del dueño..." maxLength="60" minLength="3" required value={propietario} onChange={(e) => setPropietario(e.target.value)}></Form.Control>
+                    </Form.Group>
+                    <Form.Group className="d-flex gap-3 mb-4 justify-content-center align-items-center">
+                        <Form.Label htmlFor="fecha" className="fw-bold">Fecha</Form.Label>
+                        <Form.Control type="date" id="fecha" required value={fecha} onChange={(e) => setFecha(e.target.value)} min={fechaActual} ></Form.Control>
+                        <Form.Label htmlFor="hora" className="fw-bold">Hora</Form.Label>
+                        <Form.Control type="time" id="hora" required value={hora} onChange={(e) => setHora(e.target.value)} max="21:00" min="08:00"></Form.Control>
+                    </Form.Group>
+                    <Form.Group controlId="inputSintomas" className="d-flex gap-3 mb-4 justify-content-center align-items-center">
+                        <Form.Label className="fw-bold w-25">Sintomas</Form.Label>
+                        <Form.Control type="text" placeholder="Ingrese los sintomas que observa..." required maxLength="100" minLength="5" value={sintomas} onChange={(e) => setSintomas(e.target.value)}></Form.Control>
+                    </Form.Group>
+                </Card.Body>
+                <Card.Footer className="text-center py-4">
+                    <Button type="submit" variant="primary" className="rounded-pill shadow">Agregar nueva Cita</Button>
+                </Card.Footer>
+            </Form>
+        </Card>
+
+    );
+};
+
+export default FormCitas;
