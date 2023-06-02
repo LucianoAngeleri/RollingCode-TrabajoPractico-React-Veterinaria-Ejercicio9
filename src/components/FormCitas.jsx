@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, Form, Button, Container } from "react-bootstrap";
 import ListaCitas from "./ListaCitas";
 
@@ -13,26 +13,37 @@ class Cita {
 }
 
 const FormCitas = () => {
+    const citasGuardadas = JSON.parse(localStorage.getItem('citas')) || [];
+
     const [mascota, setMascota] = useState("")
     const [propietario, setPropietario] = useState("")
     const [fecha, setFecha] = useState("")
     const [hora, setHora] = useState("")
     const [sintomas, setSintomas] = useState("")
 
-    const [citas, setCitas] = useState([])
+    const [citas, setCitas] = useState(citasGuardadas)
 
     const fechaActual = new Date().toISOString().split('T')[0];
+    
+    useEffect(() => {
+        localStorage.setItem('citas', JSON.stringify(citas));
+      }, [citas]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const cita = new Cita(mascota, propietario, fecha, hora, sintomas)
         setCitas([...citas, cita])
 
+
         setMascota("")
         setPropietario("")
         setFecha("")
         setHora("")
         setSintomas("")
+    }
+    const borrarCita = (index) =>{
+        let citasCopia = citas.filter((cita, indiceCita)=> indiceCita !== index)
+        setCitas(citasCopia)
     }
 
     return (
@@ -70,7 +81,7 @@ const FormCitas = () => {
             </Card>
         </Container>
         <Container className="my-4">
-            <ListaCitas citas={citas}></ListaCitas>
+            <ListaCitas citas={citas} borrarCita={borrarCita}></ListaCitas>
         </Container>
         </>
     );

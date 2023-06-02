@@ -1,10 +1,10 @@
 import React from 'react';
 import { Col, Card, Button } from 'react-bootstrap';
 
-const CardCitas = ({mascota, propietario, fecha, hora, sintomas}) => {
+const CardCitas = ({mascota, propietario, fecha, hora, sintomas, borrarCita}) => {
     return (
         <Col xs={12} sm={12} md={6} lg={3}>
-            <Card className="rounded-4 shadow">
+            <Card className="rounded-4 shadow h-100">
                 <Card.Header className="border-primary d-flex flex-row gap-3">
                     <div className='bg-info rounded-circle' style={{ height:"3rem", width:"3rem" }}></div>
                     <div className='d-flex flex-column'>
@@ -18,7 +18,7 @@ const CardCitas = ({mascota, propietario, fecha, hora, sintomas}) => {
                     <Card.Text className="my-3">Síntomas: {sintomas}</Card.Text>
                 </Card.Body>
                 <Card.Footer className="d-flex justify-content-end">
-                    <Button variant="danger" className="rounded-pill shadow">Borrar</Button>
+                    <Button variant="danger" className="rounded-pill shadow" onClick={borrarCita}>Borrar</Button>
                 </Card.Footer>
             </Card>
         </Col>
