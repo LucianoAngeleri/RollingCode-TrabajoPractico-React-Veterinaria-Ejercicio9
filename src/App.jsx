@@ -10,9 +10,7 @@ function App() {
       <h1 className="display-1 fw-bold">Ejercicio N°9</h1>
       <h2 className="display-2">Pacientes de Veterinaria</h2>
     </Container>
-    <Container className="my-4">
-      <FormCitas></FormCitas>
-    </Container>
+    <FormCitas></FormCitas>
     </>
   )
 }
