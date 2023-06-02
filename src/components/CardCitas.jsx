@@ -5,11 +5,13 @@ const CardCitas = ({mascota, propietario, fecha, hora, sintomas, borrarCita}) =>
     return (
         <Col xs={12} sm={12} md={6} lg={3}>
             <Card className="rounded-4 shadow h-100">
-                <Card.Header className="border-primary d-flex flex-row gap-3">
-                    <div className='bg-info rounded-circle' style={{ height:"3rem", width:"3rem" }}></div>
+                <Card.Header className="border-primary d-flex flex-row gap-2">
+                    <div className='text-center'>
+                        <div className='bg-info rounded-circle' style={{ height:"2rem", width:"2rem" }}></div>
+                    </div>
                     <div className='d-flex flex-column'>
-                    <Card.Title className="text-primary">Mascota: {mascota}</Card.Title>
-                    <Card.Subtitle className="py-3">Dueño: {propietario}</Card.Subtitle>
+                    <Card.Title className="text-primary text-break">Mascota: {mascota}</Card.Title>
+                    <Card.Subtitle className="py-3 text-break">Dueño: {propietario}</Card.Subtitle>
                     </div>
                 </Card.Header>
                 <Card.Body className="bg-secondary-subtle">
