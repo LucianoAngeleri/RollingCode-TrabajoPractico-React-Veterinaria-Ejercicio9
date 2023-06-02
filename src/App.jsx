@@ -11,6 +11,11 @@ function App() {
       <h2 className="display-2">Pacientes de Veterinaria</h2>
     </Container>
     <FormCitas></FormCitas>
+    <Container fluid className="text-center text-bg-dark py-4">
+      <footer>
+        <p>&copy; Todos los derechos reservados.</p>
+      </footer>
+    </Container>
     </>
   )
 }
