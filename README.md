@@ -46,3 +46,15 @@ Después de haber instalado las dependencias, sigue los siguientes pasos para ej
     ```
 
 ## Funcionamiento de los componentes
+
+### FormCitas.jsx
+
+El componente `FormCitas` contiene el formulario para registrar una cita en la veterinaria. Al ingresar los datos requeridos (nombre de la mascota, nombre del dueño, fecha, hora y síntomas), se crea una nueva cita. Las citas se guardan en el localStorage y se muestran en el componente `ListaCitas`.
+
+### ListaCitas.jsx
+
+El componente `ListaCitas` muestra la lista de citas registradas en tarjetas individuales. Si no hay citas registradas, se muestra un mensaje indicando que no hay citas. Cada tarjeta de cita muestra la información de la mascota, el dueño, la fecha, la hora y los síntomas. También proporciona un botón para borrar la cita.
+
+### CardCitas.jsx
+
+El componente `CardCitas` muestra los detalles de una cita en una tarjeta individual. Recibe las propiedades de la mascota, el propietario, la fecha, la hora, los síntomas y la función `borrarCita` para eliminar la cita correspondiente. La tarjeta muestra la información en secciones y proporciona un botón de "Borrar" para eliminar la cita.
