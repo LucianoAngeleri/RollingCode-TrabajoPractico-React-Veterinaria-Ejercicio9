@@ -1,4 +1,4 @@
-import { Card, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import CardCitas from "./CardCitas";
 
 const ListaCitas = ({ citas,borrarCita }) => {
